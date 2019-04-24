@@ -68,14 +68,14 @@ class FFNN(object):
 
 
 Network = FFNN()
-for i in range(5000):
+for i in range(3000):
     print( " #" + str(i) + "\n")
     print( "input (scaled): \n" + str(X))
     print( "actual output: \n" + str(y))
     print( "predicted output: \n" + str(Network.forward(X)))
     # mean sum squared loss
     print( "loss: \n" + str(np.mean(np.square(y - Network.forward(X)))))  
-    print("\p")
+    print("\n")
     Network.train(X, y)
 
 Network.predict()
