@@ -9,6 +9,7 @@ data_li = pd.read_csv('data\\lisa.csv')
 data_s = pd.read_csv('data\\simon.csv')
 data_t = pd.read_csv('data\\tobias.csv')
 
+# Up-samplng
 from imblearn.over_sampling import RandomOverSampler
 ros = RandomOverSampler(random_state=0)
 
