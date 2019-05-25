@@ -33,7 +33,7 @@ test_y = encoder.fit_transform(test_y)
 c = [1e-5,1e-4,1e-3,1e-2,1e-1]
 
 # define classifier
-clf = svm.SVC(C=c[0], gamma='scale')
+clf = svm.SVC(tol=c[0], gamma='scale')
 # fit data into classifier
 clf.fit(train_x, train_y)
 # make predictions
