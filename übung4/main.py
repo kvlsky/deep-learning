@@ -15,13 +15,25 @@ def nanargmx(a):
         multi_idx = np.unravel_index(idx, a.shape)
     return multi_idx
 
+def pad_with(vector, pad_width, iaxis, kwargs):
+    pad_value = kwargs.get('padder', 0.0)
+    vector[:pad_width[0]] = pad_value
+    vector[-pad_width[1]:] = pad_value
+    return vector
 
 def conv(image, f, bias):
-    D, H, W = image.shape
-    d, h, w = f.shape
 
     padding = 0
     stride = 1
+
+    if padding > 0:
+        img = np.zeros((image.shape[0], image.shape[1]+padding*2, image.shape[2]+padding*2))
+        for dim in range(image.shape[0]):
+            img[dim] = np.pad(image[dim], padding, pad_with)
+        image = img
+
+    D, H, W = image.shape
+    d, h, w = f.shape
 
     h_out = (H - h + 2 * padding) / stride + 1
     w_out = (W - w + 2 * padding) / stride + 1
