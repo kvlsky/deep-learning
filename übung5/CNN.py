@@ -111,3 +111,43 @@ def softmax(feature_map):
 
     return softmax_out
 
+class FFNN(object):
+    def __init__(self, weights):
+        self.inputSize = 3
+        self.outputSize = 1
+        self.hiddenSize = 1
+        self.w1 = weights
+        self.w2 = np.random.randn(self.hiddenSize,self.outputSize)
+
+    def forward(self, X):
+        # dot product of input and first set of weights
+        print(self.w1.shape, X.shape)
+        self.z = np.dot(X,self.w1)
+        # activation function 
+        self.z2 = softmax(self.z)  
+        return self.z2
+
+    def softmaxDer(self, x):
+        s = x.reshape(-1,1)
+        softDer = np.diagflat(s) - np.dot(s, s.T)
+        return softDer
+
+    def backward(self, X, y, o):
+        # backward propgate through the network
+        self.o_error = y - o 
+        self.o_delta = self.o_error * self.softmaxDer(o)
+
+        self.z2_error = self.o_delta.dot(self.w2.T)
+        self.z2_delta = self.z2_error * self.softmaxDer(self.z2)
+
+        # adjusting weights
+        self.w1 += X.T.dot(self.z2_delta)
+        self.w2 += self.z2.T.dot(self.o_delta)
+
+    def train(self, X, y):
+        o = self.forward(X)
+        self.backward(X, y, o)
+
+    def predict(self):
+        print( "Predicted data based on trained weights: ")
+
