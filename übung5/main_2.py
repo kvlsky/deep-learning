@@ -1,10 +1,4 @@
 import numpy as np
-import gzip
-import scipy.io as sio
-import pickle
-import time
-import random
-
 
 def nanargmx(a):
     idx = np.argmax(a, axis=None)
@@ -22,7 +16,6 @@ def pad_with(vector, pad_width, iaxis, kwargs):
     return vector
 
 def conv(image, f, bias):
-
     padding = 0
     stride = 1
 
@@ -121,8 +114,8 @@ def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
     max_pool2 = max_pooling(feature_map_relu2, 2, 2)
     print('\n==========================\nMax Pooling 2\n==========================\n', max_pool2)
 
-    #softmax1 = softmax(max_pool2)
-    #print('\n==========================\nSoftmax\n==========================\n', softmax1)
+    #softmax = softmax(max_pool2)
+    #print('\n==========================\nSoftmax\n==========================\n', softmax)
     """
     feature_map_1 = conv(image, filt1, bias1)
     feature_map_relu_1 = relu(feature_map_1)
@@ -137,13 +130,6 @@ def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
     DenseNetwork = FFNN(theta3)
     output=DenseNetwork.forward(max_pool2)
     return output
-    
-    # TODO: Dense Layer mit Gewichtsmatrix theta3 und bias bias3
-    # mit softmax Aktivierungsfunktion
-    
-    
-    
-    
 
 class FFNN(object):
     def __init__(self, weights):
@@ -156,11 +142,11 @@ class FFNN(object):
         # dot product of input and first set of weights
         self.z = np.dot(X,self.w1)
         # activation function 
-        self.z2 = self.softmax1(self.z)  
+        self.z2 = self.softmax(self.z)  
         return self.z2
     
     
-    def softmax1(self,feature_map):
+    def softmax(self,feature_map):
         softmax_out = np.zeros(feature_map.shape)
         for dim in range(feature_map.shape[0]):
             x = feature_map[dim]
@@ -169,73 +155,17 @@ class FFNN(object):
             softmax_out[dim] = res
         return softmax_out
     
-    def softmax_2(self, w):
-        w = np.array(w)
-        softmax_out = np.zeros(w.shape)
-        for map_num in range(w.shape[-1]):
-            for r in np.arange(0, w.shape[0]):
-                for c in np.arange(0, w.shape[1]):
-                    npa = np.array
-                    t=1
-                    e = np.exp(npa(w) / t)
-                    dist = e / np.sum(e)
-                    softmax_out[r, c, map_num] = dist
-        return softmax_out
-
-
-    def softmax(X, theta = 1.0, axis = None):
-        """
-        Compute the softmax of each element along an axis of X.
-
-        Parameters
-        ----------
-        X: ND-Array. Probably should be floats.
-        theta (optional): float parameter, used as a multiplier
-        prior to exponentiation. Default = 1.0
-        axis (optional): axis to compute values along. Default is the
-        first non-singleton axis.
-
-        Returns an array the same size as X. The result will sum to 1
-        along the specified axis.
-        """
-        # make X at least 2d
-        y = np.atleast_2d(X)
-
-        # find axis
-        if axis is None:
-            axis = next(j[0] for j in enumerate(y.shape) if j[1] > 1)
-
-        # multiply y against the theta parameter,
-        y = y * float(theta)
-
-        # subtract the max for numerical stability
-        y = y - np.expand_dims(np.max(y, axis = axis), axis)
-
-        # exponentiate y
-        y = np.exp(y)
-
-        # take the sum along the specified axis
-        ax_sum = np.expand_dims(np.sum(y, axis = axis), axis)
-
-        # finally: divide elementwise
-        p = y / ax_sum
-
-        # flatten if X was 1D
-        if len(X.shape) == 1: p = p.flatten()
-
-        return p
-
-    def sigmoidDer(self, x):
-        #derivative of sigmoid
-        return x * (1 - x)
+    def softmaxDer (self):
+        return 0
+        # TODO
 
     def backward(self, X, y, o):
         # backward propgate through the network
         self.o_error = y - o 
-        self.o_delta = self.o_error * self.sigmoidDer(o)
+        self.o_delta = self.o_error * self.softmaxDer(o)
 
         self.z2_error = self.o_delta.dot(self.w2.T)
-        self.z2_delta = self.z2_error * self.sigmoidDer(self.z2)
+        self.z2_delta = self.z2_error * self.softmaxDer(self.z2)
 
         # adjusting weights
         self.w1 += X.T.dot(self.z2_delta)
@@ -263,6 +193,7 @@ bias3=1
 
 output=TwoLayerCNN(image, l1_filter, l2_filter, bias1, bias2, theta3, bias3)
 print('Output: \n',output)
+
 """
 print('\n==========================Input Image==========================\n', X)
 
