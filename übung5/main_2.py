@@ -103,9 +103,8 @@ def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
     max_pool = max_pooling(feature_map_relu, 2, 2)
     print('\n==========================\nMax Pooling 1\n==========================\n', max_pool)
 
-
     
-    feature_map2 = conv(feature_map_relu, filt2, bias2)
+    feature_map2 = conv(max_pool, filt2, bias2)
     print('\n==========================\nFeature Map 2\n==========================\n', feature_map2)
 
     feature_map_relu2 = relu(feature_map2)
