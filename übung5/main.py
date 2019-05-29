@@ -21,7 +21,7 @@ def cross_entropy(predictions, targets, epsilon=1e-12):
     ce = -np.sum(targets*np.log(predictions+1e-9))/N
     return ce
 
-def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
+def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3, epochs=300):
     feature_map = CNN.conv(image, filt1, bias1)
     feature_map_relu = CNN.relu(feature_map)
     max_pool = CNN.max_pooling(feature_map_relu, 2, 2)
@@ -35,7 +35,7 @@ def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
     y = np.random.randint(10, size=pred_output.shape)
     cel = cross_entropy(y, pred_output)
 
-    for i in range(10):
+    for i in range(epochs+1):
         print('\nepoch {num}'.format(num = i))
         print('\npredicted output:\n' + str(pred_output))
         print('\nloss:\n' + str(cel))
