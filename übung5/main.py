@@ -10,7 +10,7 @@ l2_filter = np.random.rand(1, 2, 2)
 bias2 = 1
 
 # theta3 = l1_filter
-theta3 = np.random.rand(3, 2, 2)
+theta3 = np.random.rand(1, 2, 2)
 bias3 = 1
 
 def TwoLayerCNN(image, filt1, filt2, bias1, bias2, theta3, bias3):
