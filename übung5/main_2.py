@@ -182,7 +182,7 @@ class FFNN(object):
     
 
 
-image = np.random.rand(3, 6, 6)
+image = np.random.rand(3, 36, 36)
 l1_filter = np.random.rand(1, 2, 2)
 l2_filter = np.random.rand(1,2,2)
 bias1 = 1
