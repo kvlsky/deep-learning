@@ -153,10 +153,11 @@ class FFNN(object):
         for dim in range(X.shape[0]):
             self.z2_error[dim] = self.o_delta[dim].dot(self.w2[dim].T)
             self.z2_delta[dim] = self.z2_error[dim] * self.softmaxDerivative(self.z2[dim])
-            # adjusting weights
-            self.w1[dim] += X[dim].T.dot(self.z2_delta[dim])
-            self.w2[dim] += self.z2[dim].T.dot(self.o_delta[dim])
+            # adjusting weights (do it later in function gradDescent)
+            #self.w1[dim] += X[dim].T.dot(self.z2_delta[dim])
+            #self.w2[dim] += self.z2[dim].T.dot(self.o_delta[dim])
             pass
+        return self.z2_delta
 
     def train(self, X, y):
         o = self.forward(X)
