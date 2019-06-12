@@ -79,23 +79,6 @@ def rnn_forward(x, prev_h, Wx, Wh, b):
 
   return next_h, cache
 
-def rnn_backward_step(dnext_h, cache):
-    (x, prev_h, Wx, Wh, next_h, affine) = cache
-
-    dt = (1 - np.square(sigmoid(affine))) * (dnext_h)
-
-    dxWx = dt
-    dphWh = dt
-    db = np.sum(dt, axis=0)
-
-    dWh = prev_h.T.dot(dphWh)
-    dprev_h = Wh.dot(dphWh.T).T
-
-    dx = dxWx.dot(Wx.T)
-    dWx = x.T.dot(dxWx)
-
-    return dx, dprev_h, dWx, dWh, db
-
 def rnn_forward_prop(x, h0, Wx, Wh, b):
   N, T, D = x.shape
 
@@ -111,6 +94,38 @@ def rnn_forward_prop(x, h0, Wx, Wh, b):
     cache.append(cache_step)
 
   return h, cache
+
+'''
+Aufgabe 4
+
+'''
+
+def mae(y, out):
+    return np.sum(np.absolute(y - out))
+
+
+'''
+
+Aufgabe 5
+
+'''
+
+def rnn_backward(dnext_h, cache):
+    (x, prev_h, Wx, Wh, next_h, affine) = cache
+
+    dt = (1 - np.square(sigmoid(affine))) * (dnext_h)
+
+    dxWx = dt
+    dphWh = dt
+    db = np.sum(dt, axis=0)
+
+    dWh = prev_h.T.dot(dphWh)
+    dprev_h = Wh.dot(dphWh.T).T
+
+    dx = dxWx.dot(Wx.T)
+    dWx = x.T.dot(dxWx)
+
+    return dx, dprev_h, dWx, dWh, db
 
 def rnn_backward(dh, cache):
   dx, dh0, dWx, dWh, db = None, None, None, None, None
