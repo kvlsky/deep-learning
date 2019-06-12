@@ -7,6 +7,7 @@ from random import randint
 Aufgabe 1
 
 '''
+print('\n====================\nAufgabe 1\n====================')
 
 bitlist = []
 
@@ -14,9 +15,9 @@ for i in range(0,256):
     bitlist.append(i)
 
 def int2bit(x):
-    return "{0:b}".format(x)
+    return "{0:08b}".format(x)
 
-dicti = {}
+key_val = {}
 
 for i in range(len(bitlist)):
     key = bitlist[i]
@@ -25,7 +26,7 @@ for i in range(len(bitlist)):
     arr = list(x)
     np_arr = np.array(arr)
     np_arr = np_arr.astype(int)
-    dicti[key] = np_arr
+    key_val[key] = np_arr
 
 
 def generate_random_addition_problem(a,b):
@@ -46,13 +47,14 @@ a = randint(0,255)
 b = randint(0,255)
 
 out = generate_random_addition_problem(a,b)
-print('\n',out)
+print(out)
 
 '''
 
 Aufgabe 2
 
 '''
+
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
@@ -68,34 +70,32 @@ Aufgabe 3
 https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/recurrent_neural_networks.html
 
 '''
+print('\n====================\nAufgabe 3\n====================')
 
-def rnn_forward(x, prev_h, Wx, Wh, b):
-  xWx = np.dot(x, Wx)
-  phWh = np.dot(prev_h,Wh)
-  affine = xWx + phWh + b.T
-  next_h = sigmoid(affine)
-
-  cache = (x, prev_h.copy(), Wx, Wh, next_h, affine)
-
+def forwadStepRNN(X, W_i, h=0, W_h=0, W_o=0):
+  xW_i = np.dot(X, W_i)
+  hW_h = np.dot(h, W_h)
+  input_act = xW_i + hW_h
+  next_h = sigmoid(input_act)
+  
+  cache = (X, h, W_i, W_h, next_h, input_act)
   return next_h, cache
 
-def rnn_forward_prop(x, h0, Wx, Wh, b):
-  N, T, D = x.shape
 
-  h, cache = None, None
-  H = h0.shape[1]
-  h = np.zeros((N,T,H))
+X = np.zeros((len(bitlist),8))
 
-  h[:,-1,:] = h0
-  cache = []
+for i in range(X.shape[0]):
+      X[i,:] = key_val[i]
 
-  for t in range(T):
-    h[:,t,:], cache_step = rnn_forward(x[:,t,:], h[:,t-1,:], Wx, Wh, b)
-    cache.append(cache_step)
+W_i = np.random.rand(8,len(X))
+W_h = np.random.rand(8,len(X))
 
-  return h, cache
+next_h, cache = forwadStepRNN(X, W_i)
+print('NEXT H\n', next_h)
+
 
 '''
+
 Aufgabe 4
 
 '''
@@ -109,43 +109,11 @@ def mae(y, out):
 Aufgabe 5
 
 '''
+print('\n====================\nAufgabe 5\n====================')
 
-def rnn_backward(dnext_h, cache):
-    (x, prev_h, Wx, Wh, next_h, affine) = cache
+'''
 
-    dt = (1 - np.square(sigmoid(affine))) * (dnext_h)
+Aufgabe 6
 
-    dxWx = dt
-    dphWh = dt
-    db = np.sum(dt, axis=0)
-
-    dWh = prev_h.T.dot(dphWh)
-    dprev_h = Wh.dot(dphWh.T).T
-
-    dx = dxWx.dot(Wx.T)
-    dWx = x.T.dot(dxWx)
-
-    return dx, dprev_h, dWx, dWh, db
-
-def rnn_backward(dh, cache):
-  dx, dh0, dWx, dWh, db = None, None, None, None, None
-
-  N,T,H = dh.shape
-  D = cache[0][0].shape[1]
-
-
-  dWx, dWh, db = np.zeros((D, H)), np.zeros((H, H)), np.zeros((H,))
-  dh = dh.copy()
-
-  for t in reversed(range(T)):
-    dh[:,t,:]  += dprev_h
-    dx_, dprev_h, dWx_, dWh_, db_ = rnn_backward_step(dh[:,t,:], cache[t])
-  
-    dx[:,t,:] += dx_
-    dWx += dWx_
-    dWh += dWh_
-    db += db_
-
-  dh0 = dprev_h
-
-  return dx, dh0, dWx, dWh, db
+'''
+print('\n====================\nAufgabe 6\n====================')
