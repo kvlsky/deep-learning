@@ -6,6 +6,15 @@ import time
 import random
 
 
+def nanargmx(a):
+    idx = np.argmax(a, axis=None)
+    multi_idx = np.unravel_index(idx, a.shape)
+    if np.isnan(a[multi_idx]):
+        nan_count = np.sum(np.isnan(a))
+        idx = np.argpartition(a, -nan_count-1, axis=None)[-nan_count-1]
+        multi_idx = np.unravel_index(idx, a.shape)
+    return multi_idx
+
 def pad_with(vector, pad_width, iaxis, kwargs):
     pad_value = kwargs.get('padder', 0.0)
     vector[:pad_width[0]] = pad_value
@@ -91,6 +100,7 @@ def max_pooling(image, f, strd):
             pass
     return pool
 
+
 def softmax(X, theta = 1.0, axis = None):
     y = np.atleast_2d(X)
 
@@ -108,6 +118,18 @@ def softmax(X, theta = 1.0, axis = None):
 
     return p
 
+def dense(X, weight):
+    z = np.zeros(X.shape)
+    z2 = np.zeros(X.shape)
+    w1 = weight
+
+    for dim in range(X.shape[0]):
+        z[dim] = np.dot(X[dim], w1[dim])
+        z2[dim] = softmax(z[dim])
+        pass
+
+    o = z2
+    return o
 
 X = np.random.rand(3, 6, 6)
 
@@ -135,5 +157,9 @@ print('\n==========================\nFeature Map ReLU 2\n=======================
 max_pool2 = max_pooling(feature_map_relu2, 2, 2)
 print('\n==========================\nMax Pooling 2\n==========================\n', max_pool2)
 
-softmax1 = softmax(max_pool2)
-print('\n==========================\nSoftmax\n==========================\n', softmax1)
+theta3 = np.random.rand(3, 2, 2)
+bias3 = 1
+
+dense_out = dense(max_pool2, theta3)
+print('\n==========================\nDense\n==========================\n', dense_out)
+

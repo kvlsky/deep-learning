@@ -143,6 +143,14 @@ class FFNN(object):
     def softmaxDerivative(self, x):
         return x * (1 - x)
 
+    def reluDerivative(self, x):
+        for i in np.nditer(x):
+            if i < 0:
+                return 0
+            if i > 0:
+                return 1
+
+
     def backward(self, X, y, o):
         # backward propgate through the network
         self.o_error = y - o
@@ -158,9 +166,25 @@ class FFNN(object):
             self.w2[dim] += self.z2[dim].T.dot(self.o_delta[dim])
             pass
 
+    def backward_relu(self, X, y, o):
+        self.o_error = y - o
+        self.o_delta = self.o_error * self.reluDerivative(o)
+        self.z2_error = np.zeros(X.shape)
+        self.z2_delta = np.zeros(X.shape)
+
+        for dim in range(X.shape[0]):
+            self.z2_error[dim] = self.o_delta[dim].dot(self.w2[dim].T)
+            self.z2_delta[dim] = self.z2_error[dim] * self.reluDerivative(self.z2[dim])
+            # adjusting weights
+            self.w1[dim] += X[dim].T.dot(self.z2_delta[dim])
+            self.w2[dim] += self.z2[dim].T.dot(self.o_delta[dim])
+            pass
+
+
     def train(self, X, y):
         o = self.forward(X)
-        self.backward(X, y, o)
+        # self.backward(X, y, o)
+        # self.backward_relu(X, y, o)
 
     def predict(self):
         print("Predicted data based on trained weights: ")
