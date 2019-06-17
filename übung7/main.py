@@ -11,7 +11,7 @@ print('\n====================\nAufgabe 1\n====================')
 
 bitlist = []
 
-for i in range(0,255):
+for i in range(0,256):
     bitlist.append(i)
 
 def int2bit(x):
@@ -46,7 +46,7 @@ def generate_random_addition_problem():
 
 
 out = generate_random_addition_problem()
-print(out)
+print('Addition problem:\n',out)
 
 '''
 
@@ -77,21 +77,17 @@ print('\n====================\nAufgabe 3\n====================')
 def forward_RNN_one_step(X, W_i, h=0, W_h=0, W_o=0):
   xW_i = np.dot(X, W_i)
   hW_h = np.dot(h, W_h)
-  print(xW_i.shape)
-  print(hW_h.shape)
   input_act = xW_i + hW_h
-  print(input_act.shape)
   next_h = sigmoid(input_act)
   o = np.dot(next_h, W_o)
-  #cache = (X, h, W_i, W_h, next_h, input_act)
-  return next_h, o #, cache
+  cache = (X, h, W_i, W_h, next_h, input_act)
+  return next_h, o , cache
 
 
 '''
 
 Aufgabe 4
 
-https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/recurrent_neural_networks.html
 
 '''
 # Mean absolute error
@@ -103,35 +99,33 @@ def mae(y, out):
 
 Aufgabe 5
 
+https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/recurrent_neural_networks.html
+
 '''
 print('\n====================\nAufgabe 5\n====================')
-#
-#def backprop_one_step(X, h, h_prev, d_out, d_h_future, W_i, W_h, W_o):
-#    (x, prev_h, Wx, Wh, next_h, affine) = cache
-#
-#    #backward in step
-#    # step 4
-#    # dt delta of total
-#    # Gradient of tanh times dnext_h
-#    dt = (1 - np.square(np.tanh(affine))) * (dnext_h)
-#
-#    # step 3
-#    # Gradient of sum block
-#    dxWx = dt
-#    dphWh = dt
-#    db = np.sum(dt, axis=0)
-#
-#    # step 2
-#    # Gradient of the mul block
-#    dWh = prev_h.T.dot(dphWh)
-#    dprev_h = Wh.dot(dphWh.T).T
-#
-#    # step 1
-#    # Gradient of the mul block
-#    dx = dxWx.dot(Wx.T)
-#    dWx = x.T.dot(dxWx)
-#
-#    return dx, dprev_h, dWx, dWh, db
+
+def backprop_one_step(X, h, h_prev, d_out, d_h_future, W_i, W_h, W_o, input_act):
+
+    # dt: delta of total
+    # Gradient of sigmoid times d_h_future
+    dt = sigmoid_output_to_derivative(input_act) * (d_h_future)
+    print ('dt: ', dt)
+    # Gradient of sum block (split input_act)
+    dxWi = dt
+    dhWh = dt
+
+    # Gradient of the hidden weights matrix W_h
+    dWh = h_prev.T.dot(dhWh)
+    dprev_h = W_h.dot(dhWh.T).T
+
+    # Gradient of the input weights matrix W_i
+    #di = dxWi.dot(W_i.T)
+    dWi = X.T.dot(dxWi)
+    
+    # Gradient of the output weights matrix W_o
+    dWo = h.T.dot(d_out)
+
+    return dprev_h, dWi, dWh, dWo
     
 
 '''
@@ -141,21 +135,34 @@ Aufgabe 6
 '''
 print('\n====================\nAufgabe 6\n====================')
 
-
-X = np.zeros(2, dtype=int)
+# input size: 2 values (one bit of a, one bit of b)
+X = np.zeros((1,2), dtype=int)
 (a, b, c, a_bit, b_bit, c_bit) = generate_random_addition_problem()
-X[0]=a_bit[0]
-X[1]=b_bit[1]
-print(X[0])
-print(X[1])
-#print(c_bit)
-h = np.zeros((1,16), dtype=float)
+X[0,0]=a_bit[0]
+X[0,1]=b_bit[1]
 
+# hidden size = 16
+h = np.zeros((1,16), dtype=float)
+# weight matrices: output size = 1
 W_i = np.random.rand(2,16)
 W_h = np.random.rand(16,16)
 W_o = np.random.rand(16,1)
 
+def train (X, W_i, h, W_h, W_o):
+    next_h, o, cache = forward_RNN_one_step(X, W_i, h, W_h, W_o)
+    d_out = mae(c_bit[0], o)
+    dprev_h, dWi, dWh, dWo = backprop_one_step(X, next_h, cache[1], d_out, 1, W_i, W_h, W_o, cache[5])
+    print('NEXT H:\n', next_h)
+    print('OUTPUT:\n', o)
+    print('dprev_h:\n',dprev_h)
+    print('dWi:\n', dWi)
+    print('dWh:\n', dWh)
+    print('dWo:\n', dWo)
+    
+train(X, W_i, h, W_h, W_o)
+    
 
-next_h, o = forward_RNN_one_step(X, W_i, h, W_h, W_o)
-print('NEXT H:\n', next_h)
-print('OUTPUT:\n', o)
+
+
+
+
