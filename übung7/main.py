@@ -17,8 +17,9 @@ for i in range(0,256):
 def int2bit(x):
     return "{0:08b}".format(x)
 
-key_val = {}
 # create dictionary: key = decimal int, value = bit array
+key_val = {}
+
 for i in range(len(bitlist)):
     key = bitlist[i]
     x = int2bit(key)
@@ -28,7 +29,6 @@ for i in range(len(bitlist)):
     np_arr = np_arr.astype(int)
     key_val[key] = np_arr
 
-# print('dictionary:\n',key_val)
 
 def generate_random_addition_problem(a,b):
 # Generate random int numbers with maximum sum = 255
@@ -48,7 +48,7 @@ a = randint(0,255)
 b = randint(0,255)
 
 out = generate_random_addition_problem(a,b)
-# print(out)
+
 
 '''
 
@@ -71,8 +71,6 @@ def sigmoid_output_to_derivative(x):
 '''
 
 Aufgabe 3
-
-https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/recurrent_neural_networks.html
 
 '''
 print('\n====================\nAufgabe 3\n====================')
