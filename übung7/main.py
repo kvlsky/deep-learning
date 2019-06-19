@@ -32,7 +32,7 @@ for i in range(len(bitlist)):
 
 def generate_random_addition_problem(a,b):
 # Generate random int numbers with maximum sum = 255
-    if a + b == 255:
+    if a + b >= 255:
         return 0
     else:
         pass
