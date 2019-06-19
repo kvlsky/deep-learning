@@ -8,7 +8,8 @@ Created on Wed Jun 19 12:32:03 2019
 
 import numpy as np
 from random import randint
-from keras.models import Model
+from keras.models import Sequential
+from keras import layers
 
 '''
 
@@ -82,4 +83,38 @@ Aufgabe 8
 
 '''
 print('\n====================\nAufgabe 8\n====================')
+print('Build model...')
+model=Sequential()
+RNN = layers.SimpleRNN
+HIDDEN_SIZE = 16
+BATCH_SIZE = 128
+LAYERS = 1
 
+model.add(RNN(HIDDEN_SIZE, input_shape=(1,2)))
+model.add(layers.RepeatVector(n_bit))
+
+for _ in range(LAYERS):
+    model.add(RNN(HIDDEN_SIZE, return_sequences=True))
+
+model.add(layers.TimeDistributed(layers.Dense(n_features, activation='sigmoid')))
+model.compile(loss='mean_squared_error',
+              optimizer='adam',
+              metrics=['accuracy'])
+model.summary()
+
+for iteration in range(0, n_training_samples):
+    print()
+    print('-' * 50)
+    print('Iteration', iteration)
+    for i in range(n_bit):
+        model.fit(Train_X[iteration, i], Train_Y[iteration, i],
+                  batch_size=BATCH_SIZE,
+                  epochs=1)
+#    model.fit(Train_X[iteration], Train_Y[iteration],
+#              batch_size=BATCH_SIZE,
+#              epochs=1 ) #,
+              # validation_data=(x_val, y_val))
+
+preds = model.predict([0,1,1,0,1,0,0,0],[0,0,0,0,1,1,1,1])
+
+print('---------\nPrediction:\n----------', preds)
