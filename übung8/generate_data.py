@@ -1,4 +1,3 @@
-
 import numpy as np
 from random import randint
 
@@ -6,7 +5,6 @@ bitlist = []
 
 for i in range(0, 256):
     bitlist.append(i)
-
 
 def int2bit(x):
     return "{0:08b}".format(x)
@@ -26,11 +24,13 @@ for i in range(len(bitlist)):
 
 def generate_random_addition_problem():
     # Generate random int numbers with maximum sum = 255
-    while 1:
+    while True:
         a = randint(0, 255)
         b = randint(0, 255)
         if (a + b) <= 255:
             break
+        else:
+            pass
     # TODO: return values as bit integer or bit array?
     a_bit = key_val[a]
     b_bit = key_val[b]
