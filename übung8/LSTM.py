@@ -1,5 +1,6 @@
 from keras.models import Sequential
 from keras import layers
+from keras.optimizers import Adam
 import numpy as np
 from sklearn.model_selection import train_test_split
 from random import randint
@@ -24,7 +25,7 @@ print(X.shape, y.shape)
 RNN = layers.LSTM
 HIDDEN_SIZE = 16
 BATCH_SIZE = 512
-LAYERS = 1
+LAYERS = 8
 DIGITS = 8
 EPOCHS = 5
 INPUT_SHAPE = X.shape[1], X.shape[-1]
@@ -39,7 +40,7 @@ model.add(RNN(
         input_shape=INPUT_SHAPE))
 model.add(layers.RepeatVector(DIGITS))
 
-for _ in range(LAYERS):
+for _ in range(LAYERS - 1):
     model.add(RNN(
         HIDDEN_SIZE, 
         return_sequences=True))
@@ -47,18 +48,14 @@ for _ in range(LAYERS):
 model.add(layers.TimeDistributed(layers.Dense(
     OUT_SHAPE, 
     activation="softmax")))
+opt = Adam(lr=0.1)
 model.compile(
     loss="mean_squared_error", 
-    optimizer="adam", 
+    optimizer=opt, 
     metrics=["accuracy"])
 model.summary()
 
-for iteration in range(EPOCHS):
-    print()
-    print('-' * 50)
-    print('Iteration', iteration)
-    model.fit(X_train, y_train,
-                batch_size=BATCH_SIZE,
-                epochs=1)
-    testScore = model.evaluate(X_test, y_test, verbose=0)
-    print('Test\nloss - %.6f, accuracy - %.6f' % (testScore[0], testScore[1]))
+model.fit(X_train, y_train,
+            batch_size=BATCH_SIZE,
+            epochs=EPOCHS,
+            validation_data=(X_test, y_test))
