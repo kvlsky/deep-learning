@@ -25,7 +25,6 @@ char_indices = dict((c, i) for i, c in enumerate(chars))
 indices_char = dict((i, c) for i, c in enumerate(chars))
 
 maxlen = 40
-# step = 3
 sentences = []
 next_chars = []
 
