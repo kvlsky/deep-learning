@@ -1,4 +1,3 @@
-from __future__ import print_function
 from keras.callbacks import LambdaCallback
 from keras.models import Sequential
 from keras.layers import Dense
@@ -37,7 +36,7 @@ for i in range(0, TEXT_LENGHT - MAXLEN):
     next_chars.append(text[i + MAXLEN])
 print(f'Number of sequences - {len(sentences)}')
 
-print('===============Vectorization===============')
+print('\n===============Vectorization...===============')
 
 x = np.zeros((len(sentences), MAXLEN, CHARS_LENGHT), dtype=np.bool)
 y = np.zeros((len(sentences), CHARS_LENGHT), dtype=np.bool)
@@ -55,7 +54,7 @@ Aufgabe 2:  LSTM Modell
 '''
 
 
-print('===============Model===============')
+print('\n===============Creating Model...===============')
 model = Sequential()
 model.add(LSTM(128, input_shape=(MAXLEN, CHARS_LENGHT)))
 model.add(Dense(CHARS_LENGHT, activation='softmax'))
