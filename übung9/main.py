@@ -25,11 +25,11 @@ char_indices = dict((c, i) for i, c in enumerate(chars))
 indices_char = dict((i, c) for i, c in enumerate(chars))
 
 maxlen = 40
-step = 3
+# step = 3
 sentences = []
 next_chars = []
 
-for i in range(0, len(text) - maxlen, step):
+for i in range(0, len(text) - maxlen):
     sentences.append(text[i: i + maxlen])
     next_chars.append(text[i + maxlen])
 print(f'nb sequences - {len(sentences)}')
@@ -59,7 +59,7 @@ model.add(Dense(len(chars), activation='softmax'))
 
 optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer)
-
+model.summary()
 
 '''
 
@@ -101,7 +101,8 @@ def on_epoch_end(epoch, _):
             for t, char in enumerate(sentence):
                 x_pred[0, t, char_indices[char]] = 1.
 
-            preds = model.predict(x_pred, verbose=0)[0]
+            preds = model.predict(x_pred, verbose=0)
+            preds = preds[0]
             next_index = sample(preds, diversity)
             next_char = indices_char[next_index]
 
@@ -116,5 +117,5 @@ print_callback = LambdaCallback(on_epoch_end=on_epoch_end)
 
 model.fit(x, y,
           batch_size=128,
-          epochs=60,
+          epochs=1,
           callbacks=[print_callback])
