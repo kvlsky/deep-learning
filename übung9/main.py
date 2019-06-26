@@ -8,6 +8,12 @@ import numpy as np
 import random
 import sys
 
+'''
+
+Aufgabe 1: Daten Präparation
+
+'''
+
 with open('übung9\\nietzsche.txt', encoding='utf-8') as f:
     text = f.read().lower()
 print(f'lenght of the corpus - {len(text)}')
@@ -22,6 +28,7 @@ maxlen = 40
 step = 3
 sentences = []
 next_chars = []
+
 for i in range(0, len(text) - maxlen, step):
     sentences.append(text[i: i + maxlen])
     next_chars.append(text[i + maxlen])
@@ -38,6 +45,13 @@ for i, sentence in enumerate(sentences):
     y[i, char_indices[next_chars[i]]] = 1
 
 
+'''
+
+Aufgabe 2:  LSTM Modell
+
+'''
+
+
 print('Build model...')
 model = Sequential()
 model.add(LSTM(128, input_shape=(maxlen, len(chars))))
@@ -47,8 +61,13 @@ optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer)
 
 
+'''
+
+Aufgabe 3:  Sample Funktion
+
+'''
+
 def sample(preds, temperature=1.0):
-    # helper function to sample an index from a probability array
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds) / temperature
     exp_preds = np.exp(preds)
@@ -56,10 +75,15 @@ def sample(preds, temperature=1.0):
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
 
+'''
+
+Aufgabe 4:  Testausgabe
+
+'''
+
 
 def on_epoch_end(epoch, _):
-    # Function invoked at end of each epoch. Prints generated text.
-    print()
+    print('\n')
     print(f'----- Generating text after Epoch: {epoch}')
 
     start_index = random.randint(0, len(text) - maxlen - 1)
@@ -72,7 +96,7 @@ def on_epoch_end(epoch, _):
         print(f'----- Generating with seed: "{sentence}"')
         sys.stdout.write(generated)
 
-        for i in range(400):
+        for _ in range(400):
             x_pred = np.zeros((1, maxlen, len(chars)))
             for t, char in enumerate(sentence):
                 x_pred[0, t, char_indices[char]] = 1.
@@ -86,7 +110,7 @@ def on_epoch_end(epoch, _):
 
             sys.stdout.write(next_char)
             sys.stdout.flush()
-        print()
+        print('\n')
 
 print_callback = LambdaCallback(on_epoch_end=on_epoch_end)
 
