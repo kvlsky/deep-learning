@@ -82,7 +82,7 @@ def sample(preds, temperature=1.0):
 Aufgabe 4:  Testausgabe
 
 '''
-EPOCHS = 5
+EPOCHS = 10
 
 def on_epoch_end(epoch, _):
     print('\n')
