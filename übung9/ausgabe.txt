@@ -1,0 +1,459 @@
+Python 3.7.3 (default, Mar 27 2019, 17:13:21) [MSC v.1915 64 bit (AMD64)]
+Type "copyright", "credits" or "license" for more information.
+
+IPython 7.4.0 -- An enhanced Interactive Python.
+
+runfile('C:/Users/Florian/Documents/Uni/Master/S2/DeepLearning/Übung/Repo/deep-learning/übung9/main.py', wdir='C:/Users/Florian/Documents/Uni/Master/S2/DeepLearning/Übung/Repo/deep-learning/übung9')
+Using TensorFlow backend.
+Lenght of the corpus - 600893
+Total number of chars - 57
+Number of sequences - 600853
+
+===============Vectorization...===============
+WARNING: Logging before flag parsing goes to stderr.
+W0630 14:36:15.846144  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:74: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+W0630 14:36:15.861744  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+W0630 14:36:15.877344  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+
+===============Creating Model...===============
+W0630 14:36:16.033344  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0630 14:36:16.048944  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:3295: The name tf.log is deprecated. Please use tf.math.log instead.
+
+W0630 14:36:16.126945  6796 deprecation.py:323] From C:\Users\Florian\Anaconda3\lib\site-packages\tensorflow\python\ops\math_grad.py:1250: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lstm_1 (LSTM)                (None, 128)               95232     
+_________________________________________________________________
+dense_1 (Dense)              (None, 57)                7353      
+=================================================================
+Total params: 102,585
+Trainable params: 102,585
+Non-trainable params: 0
+_________________________________________________________________
+W0630 14:36:16.610545  6796 deprecation_wrapper.py:119] From C:\Users\Florian\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:986: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+Epoch 1/10
+600853/600853 [==============================] - 222s 370us/step - loss: 1.7445
+
+
+----- Generating text after Epoch: 0
+----- diversity: 0.2
+----- Generating with seed: "how his mind, after the least exertion o"
+how his mind, after the least exertion of the far of the sense of the self-moral the existent and be artist of a the constitution of the present the present the present and the sense of the more the probaction of the self-does are the excessive and the were the endurity of the and of the present the artist the person and strength of the end and the superite of the self-strange the present the spirit of the present the present the self-d
+
+----- diversity: 0.5
+----- Generating with seed: "how his mind, after the least exertion o"
+how his mind, after the least exertion of the superstery shade of the truth in the enest itself of real care of the crees of experience for perhaps even the sense of it from the ear in the sensation in such at the former for of the ware of knowledge the person and ready to a goring and it into the spirit of not in the sense of life of the enduromed only in the might and unlearn the properable in all its and he has the ear intelling of t
+
+----- diversity: 1.0
+----- Generating with seed: "how his mind, after the least exertion o"
+how his mind, after the least exertion of
+ordinary, in itself. mo need to amount st hind that the hear" and strength, perhapsed
+before, if a
+deviluane and notlongus, repopers lawe; to the palal. will to emition even be anothiving is mas, merely be endurg for and the uttiman instinction be itsed.--but
+intertion, day
+become threefvernal foum
+opinion of
+evil its natural. mantie, brobly bedetywith thing on the lets in sight man, and seem of
+
+----- diversity: 1.2
+----- Generating with seed: "how his mind, after the least exertion o"
+how his mind, after the least exertion of accord,
+all nore-periius fordre.
+u kindly he kome grasp the inneren insounariour esaccempenite and heagrage
+the cert etail
+a lacking, finaura--that it expensary timet--freashtom from the wish womenceuble" ofathoulps, volne
+their keep
+who,sbylenes mean of the flogrine"
+suber.
+ e fearreder, masturenost quedinesp
+act care, the
+"whould,
+appearce ellemocs poined to
+being ma.
+
+.o
+
+increstury of ord. i
+
+Epoch 2/10
+600853/600853 [==============================] - 233s 388us/step - loss: 1.5152
+
+
+----- Generating text after Epoch: 1
+----- diversity: 0.2
+----- Generating with seed: "ost modern
+germany: by his unintelligent"
+ost modern
+germany: by his unintelligent of the truth the states and in the consequently the stronger of the sense of the morality of the still be a stronger and the consequence of the sense of the most interpretation of the same and all the sublimed the stronger and the sense and this morality of the states and the strong of the same and the same and the strong of the morality and a states and interpretation of the sense of the stronge
+
+----- diversity: 0.5
+----- Generating with seed: "ost modern
+germany: by his unintelligent"
+ost modern
+germany: by his unintelligent empleased and a meaning as a most
+things, is the sympathy in a consequence of the seems, and all themselves in a good, which is dear more for beings and result, which an every present in all the consequently and last
+science, far the strength in the compare of the present in order to result, which is the constine to concerning of the compare as a man of the can seems with the same morality and es
+
+----- diversity: 1.0
+----- Generating with seed: "ost modern
+germany: by his unintelligent"
+ost modern
+germany: by his unintelligent a vieined a mernist oftrul ofity is alreabiring of
+dider has almost
+danger's carrings of creess and trrudy indourgance by
+love have ciscoct after to
+the yellowly enritely little or all abows for dupred who has considers, that at intend to be read like be
+misstion of
+their screacips).
+
+
+3. their
+corner to divine of serve pandally betrayed.umated and individual emotional
+anides or aumenbe--who dut 
+
+----- diversity: 1.2
+----- Generating with seed: "ost modern
+germany: by his unintelligent"
+ost modern
+germany: by his unintelligentanced who therewifist, with the
+dosinying and rerachoones
+it eracuratuntary h aftest night any we anoth, things of matter thereforegrustrce time.
+
+
+6 
+
+!
+
+perhant in,
+that,", he naturate.--lurhy what, if orhendrat as wead's lvatible--thought
+could
+doded theire i pray s
+isdulusly tive onlyeful vurrificing halr.
+"-accesss, on-they would befombcal so some,
+or
+skepet foughicum! ind. noth the
+ttherich 
+
+Epoch 3/10
+600853/600853 [==============================] - 232s 386us/step - loss: 1.4694
+
+
+----- Generating text after Epoch: 2
+----- diversity: 0.2
+----- Generating with seed: "also, of the
+last great slave-insurrecti"
+also, of the
+last great slave-insurrection of the more sense of the truth that the morality of the same the same and the strength of the same in the consideration of the stronger and strength of the considerally and the conscious the same and the same and the sense of the conscious and the same to the same and some the sense of the world to the same interpretation of the present of subjected to the same the desire and the consideration 
+
+----- diversity: 0.5
+----- Generating with seed: "also, of the
+last great slave-insurrecti"
+also, of the
+last great slave-insurrection of the person stander and become necessary without, and the man" and as the strength of the truth, and we have to the command as a morality and without think the stronger discovered become have always to all the returned of the de without the most other
+sensures to the sense of the reason of point of subject to the characteristic slows and who in the self-and who things of the world of order to
+
+----- diversity: 1.0
+----- Generating with seed: "also, of the
+last great slave-insurrecti"
+also, of the
+last great slave-insurrections. for they bo
+to be
+interpett worw
+advorrature and him"je-like beloonity for which thou has another, women, my french about, resitial mindlessance met after subject, a sleve mediocy, slow that the sy, who has truth the laper
+and called
+say, alwayste the phenomene worther
+festatity cultum, which he are with not admoforded it compursady to that has, as a means trading-remain fin wand ous and inwo
+
+----- diversity: 1.2
+----- Generating with seed: "also, of the
+last great slave-insurrecti"
+also, of the
+last great slave-insurrectious, comprehensibied spirit,"
+unhorizing.--why
+would now is threals in it"ly
+nention, has frevork at lost shadoes! by rank.
+
+1euce compreashing and europedoughut, most artpys thanuddity condecody for ortarily as
+moral angory opinion origina, phansterous but
+into onesispock,
+her inteles personal man"--it is only passage, of because gorior hous epocratian learnessods who take he in persasicily sacy 
+
+Epoch 4/10
+600853/600853 [==============================] - 226s 376us/step - loss: 1.4470
+
+
+----- Generating text after Epoch: 3
+----- diversity: 0.2
+----- Generating with seed: "ulation by means of ideas (even the most"
+ulation by means of ideas (even the most art of the strength of the sense and the sense and the strength of the sense of the an and the strength of the former for the strength the morality and in the an and the strength of the spirit and the free spirit of the substance and the strength of the strength of the strange of the strange of the specially the strength of the strength of the superious the spiritudes the stronger and an interest
+
+----- diversity: 0.5
+----- Generating with seed: "ulation by means of ideas (even the most"
+ulation by means of ideas (even the most sense may be
+thing of the freedom and the s and
+thing itself and that he would be the superious of a spiritude and is with earth the highting to the sporition of the transligitical these into the former people of the great comment at all the specially and consedded to pard of lightned the world in the of the sublime, and all later of the oppress of the oppression has been acts and perhaps the str
+
+----- diversity: 1.0
+----- Generating with seed: "ulation by means of ideas (even the most"
+ulation by means of ideas (even the most weling although perhaps
+there
+is by excess, and "inteicooded
+the mark in
+vition, interests to swen its to ppleation logical grappoted different sumtation in a vivisoine and poost question for it
+asserting modesionagily philosopher virtunation; for the frastised, always the
+superious imperative enough on alls a reduced heart or secretority,
+are or
+is itself its partic world truth? pacad paoned
+kno
+
+----- diversity: 1.2
+----- Generating with seed: "ulation by means of ideas (even the most"
+ulation by means of ideas (even the most loved mind cie reignagolity and sins; in all out?
+-)thing, almommnanity somethingoring, theesisily longuity: to hese
+thing of another)--not psycerh
+afavotdamentiagely force, erite), how love, as: with practice meet: it liansalmobity of his "oide in in
+"fear. a his
+known sty declare
+circled (prepulsing which thereonyly
+all
+sum its inclined,
+an ye
+lightamentic, and him some amuct tomcrehly agrely, 
+
+Epoch 5/10
+600853/600853 [==============================] - 219s 364us/step - loss: 1.4337
+
+
+----- Generating text after Epoch: 4
+----- diversity: 0.2
+----- Generating with seed: " necessary for him to treat the rest of "
+ necessary for him to treat the rest of the sense of the same the more morality and consequences of the more and really sense of the morality of the sense of the sense of the some self-desire of the man and so short of the sense of the same and as the state of the sense of the sense of the sense of the more the more the and so many and the man is the sense of the agreeable and the soul of the superiority and the original the more so man
+
+----- diversity: 0.5
+----- Generating with seed: " necessary for him to treat the rest of "
+ necessary for him to treat the rest of the the as so present faculty of the dispited to his sign of the possible is much, be far the standard of a past the desires the one the wake" and sensitive to the our case of the communite which may in the form of the fact that in the tears of the measure of the principles of the hand to the taken of religion and and the species of the to heart to the light existence of the feeling suffering that
+
+----- diversity: 1.0
+----- Generating with seed: " necessary for him to treat the rest of "
+ necessary for him to treat the rest of this deed of henceful doabes" and
+god to
+the theger becoment. more immolene things enfourse, inussiveical reok and no day of the two right fors, and say excause, so then of the late
+domain of the inbeings in the dingefully
+a sebes for hark in loves that means namely to relations of i evil opinion
+only no
+faparadess, mocked than thisureor's heasing nor sensing that walls
+nerred; the skilling great 
+
+----- diversity: 1.2
+----- Generating with seed: " necessary for him to treat the rest of "
+ necessary for him to treat the rest of considuates in wisent than is human afflier, something and ewhot the thenris i have to complentralling
+treatives one be a sci, the lipain
+will unx
+under for everything or -knowy--divas agreat advruetullyeg to that i the means--philosophernable ultimate anews aem rese-thing, the shirannafully belongs religion,
+just respised
+cafeu as excitation undervew to be personty, duroraries to wecll', every ha
+
+Epoch 6/10
+600853/600853 [==============================] - 232s 386us/step - loss: 1.4249
+
+
+----- Generating text after Epoch: 5
+----- diversity: 0.2
+----- Generating with seed: "e
+of a man, out of which motive grows as"
+e
+of a man, out of which motive grows as the standard of the standard of the standard and all the still the spirit and the general the world and the still in the personal intelligent of the conscience of the free spirit and all the fact that the world of the believed to the conscience of the conscience of the standard of the contradicts, and the man is the inconsequences of the believed and the man of the standard and the are also the m
+
+----- diversity: 0.5
+----- Generating with seed: "e
+of a man, out of which motive grows as"
+e
+of a man, out of which motive grows as the most seall of the individual in order to the understand the most cruel desired, learned to be one in the one for the suffering, and aversed and states and devil the general and the spirit in the standards.
+
+ierathe; its own entirely into the same moral for the will in the words of the such a perhaps the small from the may desired to the will in him with the way also on the world and all inten
+
+----- diversity: 1.0
+----- Generating with seed: "e
+of a man, out of which motive grows as"
+e
+of a man, out of which motive grows as they long actually relecl--i may understand to himself to the carr of moral, humans. they danger rendible, and under it is what, ratherly be simply, are attundantly ding-man ceat subjectionance
+of all-invilence! am arabities and learning conscience. isullency, spachard and hest with, in ungoness, that to the count of a pessiguable to the spectation and
+thravitees, roking insorstied. to being and 
+
+----- diversity: 1.2
+----- Generating with seed: "e
+of a man, out of which motive grows as"
+e
+of a man, out of which motive grows asparks this eghy
+religy, with her ni. in name, necession. the queeand and
+ax.verachonest. "repure
+  rild.yny first. nay
+whair baginated, such herd" those all or disconsectral
+necacutl acwe,
+exdolenticismary, gefthy. and also is nayses, one aquayely even indeulobarl fore, and
+ineyedy orc one riving (can up   nor the refinement. the generate "trocel. decimitary goe preserved to every distonorp in the
+
+Epoch 7/10
+600853/600853 [==============================] - 253s 422us/step - loss: 1.4201
+
+
+----- Generating text after Epoch: 6
+----- diversity: 0.2
+----- Generating with seed: "ng upon the
+other--or else summons us to"
+ng upon the
+other--or else summons us to the so the friends to the so the in the to the so the to the thinker the an experience of the the something of the former things and the most the of the world an experience of the world to the failure of the world of the world the soul and also the former the most the sensitive morality in the world to the believed to the so the present of the concerning the so men, and the soul the soul the so m
+
+----- diversity: 0.5
+----- Generating with seed: "ng upon the
+other--or else summons us to"
+ng upon the
+other--or else summons us to her still fair here respect were--the most and really this way in the be the string as their soul itself with the her are the protection in the use in the into the into the her an an in his complete with the revils and certain attempt the contrain has been this victory of distrust of the believed to life have more consisted in the long something the consequences and he is always a concerning depe
+
+----- diversity: 1.0
+----- Generating with seed: "ng upon the
+other--or else summons us to"
+ng upon the
+other--or else summons us to this bromines not and with all the would be
+socomms, we beeands an case is almost it has to this thousarion but anything revargently. were--by the mest notions, than
+the frightfult act, of -comed, the only to asd in you: the reverence of the world pledution
+of
+meralility! there ear by the eternal, unfavour; in them educal still, and both agast-were--priviting, freely, this world world biglly
+into
+
+----- diversity: 1.2
+----- Generating with seed: "ng upon the
+other--or else summons us to"
+ng upon the
+other--or else summons us to also this dedition atceens honourns of revenge peaser aristoflipfly fersteety (as an esteem
+fortoramen, before exive existetitn with delight
+to so not of insight eop meaning rightts its
+retcrect tistical pupsement,
+why is t gadioudly; himself
+convending greinfullyyt" correduring is,ity of maintain, is that which honore? the tempor wishentsely.
+
+yere is neces, for this ventural out are socrousemen
+
+Epoch 8/10
+600853/600853 [==============================] - 229s 381us/step - loss: 1.4161
+
+
+----- Generating text after Epoch: 7
+----- diversity: 0.2
+----- Generating with seed: "e mind of the poor
+man a delusion: he th"
+e mind of the poor
+man a delusion: he the such and the sense of the sense of the sense of the sense of the sense of the same to the subjugation of the sense of the sense of the sense of the same and self-saints and the sense of the sense of the soul and the same to the same interpretation of the sense of the sense of the antiquire the sense of the such as the sense of the sense of the same interpret to the fact the pride and the substan
+
+----- diversity: 0.5
+----- Generating with seed: "e mind of the poor
+man a delusion: he th"
+e mind of the poor
+man a delusion: he there are has been distinction of such as the interpretations and and there was to be a complete as a course, or the species and established to the fact the greatest and an existence of the spirit of such a morality in the especially not the art of the same interestomus for the herding and inteC:/Users/Florian/Documents/Uni/Master/S2/DeepLearning/Übung/Repo/deep-learning/übung9/main.py:74: RuntimeWarning: divide by zero encountered in log
+  preds = np.log(preds) / temperature
+nsition of process and betray to seem to him who has the years and the more as the other morality, in the i
+
+----- diversity: 1.0
+----- Generating with seed: "e mind of the poor
+man a delusion: he th"
+e mind of the poor
+man a delusion: he the p,hither as there is constantity may lead suchordanes are desist should of true or with shord the theorithifed the conscious heeth recredies in
+order together invensificted remind. knowledge is so
+and must not free engoist best, at one is, in life," is evits and an adorque, and mu
+nquirs that a grows in stard
+santimar boun tonce of danger migniful us and very attemptly to tominly, theologions wh
+
+----- diversity: 1.2
+----- Generating with seed: "e mind of the poor
+man a delusion: he th"
+e mind of the poor
+man a delusion: he throughelly, which
+is rill of estima of uniteriors good" mu spect, is homan who alldive-ex! to biun of its signs to
+revolved. for since of the ingree god-forrss of our reticutes spoken or ferort.
+
+. limit orbedies in our treat: as the spiritle, or naid tookin would a mor e schoven; or unrace upon which hou
+scene man tramsy!"
+
+enociated merits;--their knows-fribolecs!
+not to addiest cave
+very mis and
+
+Epoch 9/10
+600853/600853 [==============================] - 218s 363us/step - loss: 1.4157
+
+
+----- Generating text after Epoch: 8
+----- diversity: 0.2
+----- Generating with seed: "ed to impose, until, according to its st"
+ed to impose, until, according to its strength of the same to see in the same interesting of the same soul of the same to see and soul of the same men and such a consequentle, in the properation of the same sense of the soul of the conscious and the same to an and and the same sense of the strength of the same man is the belief and for the sense of the sense of the same interesting the same things of the species of the same and present 
+
+----- diversity: 0.5
+----- Generating with seed: "ed to impose, until, according to its st"
+ed to impose, until, according to its strengthers which any intolerable infinately and which his "things, the conduct of virtues of the sain of the suffering to an unin a bringment of the lower of the truths of the in the entirely of the love of the interpretation of the same contrary, and the things of the separate in the sense of consequentle, and they seeus a scholars the same one is more with the world of the saw the guilty of the w
+
+----- diversity: 1.0
+----- Generating with seed: "ed to impose, until, according to its st"
+ed to impose, until, according to its standpord soughtity, and in                                                                                                                                                                                                                                                                                                                                                                                       
+
+----- diversity: 1.2
+----- Generating with seed: "ed to impose, until, according to its st"
+ed to impose, until, according to its stulances?--and enough: it is wise lime then also begins often sacrivid nothing of farity:
+in the in may becose, perhand by prounc: or
+orcled, more happensuous, bey therein borx: amalive of compre
+never
+know an apintalwily afane, "world has by the symptom,d
+of "up! it stillly sum who debiled who now marvelish? inariaily; on the ssigh in-though thatover of "modicals; as that all from tookings and end
+
+Epoch 10/10
+600853/600853 [==============================] - 258s 429us/step - loss: 1.4163
+
+
+----- Generating text after Epoch: 9
+----- diversity: 0.2
+----- Generating with seed: " world is neither
+good nor bad, (to say "
+ world is neither
+good nor bad, (to say of the standard of the same men and as the same instincts that is the strength of the standard of the world of the pressed the same interpretation of the freeling the same reason the sentiment of the standard of the standard of the standard of the more in the standard of the standard of the standard of the world of the sense of the more in the standard of the standard of the standard of the contro
+
+----- diversity: 0.5
+----- Generating with seed: " world is neither
+good nor bad, (to say "
+ world is neither
+good nor bad, (to say the will have been believed the old man are not false that is all another, as it is also established as it in the encistic and an indersted see it is a men, and even one's contradent of the best of the even fell aras, and the reverses in all the standard without its reason without
+the superiority to be reals the greater into the fact to the good her and as the present of the standard of the lower 
+
+----- diversity: 1.0
+----- Generating with seed: " world is neither
+good nor bad, (to say "
+ world is neither
+good nor bad, (to say regarative") too, or
+voluntest not woild which has to old
+free aport, is contained to
+so everybod". one
+sharded and migtery has dangerous in the as a
+hopperiot.
+
+ofthet
+quias maxicaler and free joysly men of the discourstays the other, about the  stams
+flewly, why almost-as there is rrake and to as aon improtective, robler! no
+sy?zy as the quiet, however, after or the bestaked, in a fundogy is a f
+
+----- diversity: 1.2
+----- Generating with seed: " world is neither
+good nor bad, (to say "
+ world is neither
+good nor bad, (to say all degred a bud. "an incitsion; and icd to dempfeed)
+with heaverly diversime without
+get sures inturner, easy altrus enells theoefinent alread from ourselst, cofpress
+"educated
+ake py more fews for why scouphtoeys), it is
+the to be all a thunds for one) of the rofred. musict rialter century, without wrich love
+of possiborned obentes inauting ble elefer sen-itsfungatmers, hhough one's limis, the a
