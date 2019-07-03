@@ -7,3 +7,9 @@
 
 1. download data from https://drive.google.com/drive/folders/1MYGsij12XWBKV5UpOSpzXIoJKv6MRNj0
 2. unzip Images.tar using ``tar -xvzf Images.tar`` (git bash/mingw/etc.) in classifier root directory
+
+## Tasks:
+
+1. save classification model in keras format - h5
+2. create classification report
+3. create confusion matrix
