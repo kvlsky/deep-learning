@@ -1,7 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\Andrew\\Miniconda3\\python.exe",
-    "python.formatting.provider": "black",
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true,
-    "python.linting.enabled": true
-}
