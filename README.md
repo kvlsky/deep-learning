@@ -13,3 +13,7 @@
 1. save classification model in keras format - h5
 2. create classification report
 3. create confusion matrix
+4. save plots:
+4.1. accuracy plot
+4.2. report as heatmap
+4.3. confusion matrix
