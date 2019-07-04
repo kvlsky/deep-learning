@@ -34,7 +34,7 @@ def ImgClf(input_shape, num_classes, epochs):
     model.add(Dense(num_classes, activation="softmax"))
 
     model.compile(
-        loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]
+        loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"]
         )
 
     return model
