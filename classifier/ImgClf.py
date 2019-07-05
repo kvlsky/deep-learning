@@ -7,7 +7,7 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 
 
-def ImgClf(input_shape, num_classes, epochs):
+def classifier(input_shape, num_classes, epochs):
 
     model = Sequential()
 
