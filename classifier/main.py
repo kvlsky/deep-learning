@@ -8,7 +8,7 @@ from convert_image import convert_image_to_array
 from clf_plot import save_plot
 from ImgClf import classifier
 
-
+print('Getting data...')
 (
     img_train,
     train_labels,
@@ -30,6 +30,7 @@ x_test, y_test = [], []
 x_val, y_val = [], []
 
 # Convert images --> arr and get their labels
+print('Converting images...')
 for img, label in zip(data[0], data[1]):
     x_train.append(convert_image_to_array(img))
     y_train.append(label)
@@ -42,8 +43,10 @@ for img, label in zip(data[4], data[5]):
     x_val.append(convert_image_to_array(img))
     y_val.append(label)
 
+print('Building model...')
 model = classifier(input_shape, num_classes, epochs)
 
+print('Running model...')
 history = model.fit(
     x_train, y_train,
     batch_size=128,
