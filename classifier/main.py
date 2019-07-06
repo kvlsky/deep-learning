@@ -33,14 +33,17 @@ x_val, y_val = [], []
 # Convert images --> arr and get their labels
 print('Converting images...')
 for img, label in zip(img_train, train_labels):
+    print(f'converting img: {img}')
     x_train.append(convert_image_to_array(img))
     y_train.append(label)
 
 for img, label in zip(img_test, test_labels):
+    print(f'converting img: {img}')
     x_test.append(convert_image_to_array(img))
     y_test.append(label)
 
 for img, label in zip(img_val, val_labels):
+    print(f'converting img: {img}')
     x_val.append(convert_image_to_array(img))
     y_val.append(label)
 
