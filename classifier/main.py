@@ -9,6 +9,7 @@ from clf_plot import save_plot
 from ImgClf import classifier
 
 print('Getting data...')
+
 (
     img_train,
     train_labels,
@@ -31,15 +32,15 @@ x_val, y_val = [], []
 
 # Convert images --> arr and get their labels
 print('Converting images...')
-for img, label in zip(data[0], data[1]):
+for img, label in zip(img_train, train_labels):
     x_train.append(convert_image_to_array(img))
     y_train.append(label)
 
-for img, label in zip(data[2], data[3]):
+for img, label in zip(img_test, test_labels):
     x_test.append(convert_image_to_array(img))
     y_test.append(label)
 
-for img, label in zip(data[4], data[5]):
+for img, label in zip(img_val, val_labels):
     x_val.append(convert_image_to_array(img))
     y_val.append(label)
 
@@ -51,7 +52,7 @@ history = model.fit(
     x_train, y_train,
     batch_size=128,
     epochs=epochs,
-    validation_data=(x_test, y_test)
+    validation_data=(x_val, y_val)
 )
 
 print("Saving Model...")
