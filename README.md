@@ -9,7 +9,7 @@
 2. unzip Images.tar using ``tar -xvzf Images.tar`` (git bash/mingw/etc.) in classifier root directory
 
 ## Tasks:
-
+0. RUN ON GPU https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
 1. save classification model in keras format - h5 [done]
 2. create classification report [-]
 3. create confusion matrix [done]
@@ -17,3 +17,4 @@
     - accuracy plot [done]
     - report as heatmap [-]
     - confusion matrix [done]
+  
