@@ -5,6 +5,7 @@
 
 # Classifier:
 
+0. install all packages `pip -r install requirements.txt`
 1. download data from https://drive.google.com/drive/folders/1MYGsij12XWBKV5UpOSpzXIoJKv6MRNj0
 2. unzip Images.tar using ``tar -xvzf Images.tar`` (git bash/mingw/etc.) in classifier root directory
 
