@@ -18,4 +18,10 @@
     - accuracy plot [done]
     - report as heatmap [-]
     - confusion matrix [done]
+
+## Run on GPU:
+1. https://www.tensorflow.org/install/gpu
+2. `pip install tensorflow-gpu`
+3. run `python`
+4. `sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))`
   
