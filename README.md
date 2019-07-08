@@ -1,3 +1,13 @@
+# Punkte
+
+
+|Aufgabe|Punkte|
+|---|---|
+|   7|   14.5/24|
+|   8|  17.5/22 |
+|   9|   | 
+
+
 Übung 4 links:
 1.  http://cs231n.github.io/convolutional-networks/
 2.  https://wiseodd.github.io/techblog/2016/07/16/convnet-conv-layer/
