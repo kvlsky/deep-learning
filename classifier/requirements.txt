@@ -19,7 +19,7 @@ matplotlib == 3.0.3
 
 # conf_matrix.py: 1
 # convert_image.py: 7
-numpy == 1.16.4
+numpy == 1.22.0
 
 # GetData.py: 4
 # crop_img.py: 4
